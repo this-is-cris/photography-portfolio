@@ -2,10 +2,17 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Fetcher from 'fetchr';
+
 import createBrowserHistory from 'history/lib/createBrowserHistory';
 import { Router } from 'react-router';
 
 import routes from './routes';
+
+var fetcher = new Fetcher({
+    xhrPath: '/api',
+    xhrTimeout: 10000
+});
 
 var history = createBrowserHistory();
 
@@ -25,5 +32,17 @@ history.listenBefore((location, callback) => {
 
 ReactDOM.render(
 	<Router routes={routes} history={history} />,
-	document.getElementById('app')
+	document.getElementById('app'),
+  () => {
+    fetcher
+      .read('photo-service')
+      .params({id: 1234})
+      .end((err, data, meta) => {
+        if(err) {
+          console.log(err);
+          return;
+        }
+        console.log(data);
+      });
+  }
 );

@@ -43,8 +43,11 @@ a:focus {
 .app-header {
 	position: relative;
 	height: 8rem;
+	padding-left: 4rem;
+	padding-right: 4rem;
 	color: $color-white;
 	background: $color-dark-500;
+	z-index: 5000;
 }
 
 .logo {
@@ -55,17 +58,75 @@ a:focus {
 	float: right;
 }
 
+.navigation-trigger {
+	position: absolute;
+	top: 0;
+	right: 4rem;
+	width: 8rem;
+	height: 8rem;
+	border: 0;
+	font-family: inherit;
+	color: inherit;
+	background: transparent;
+	z-index: 1000;
+}
+
+.navigation nav {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	color: $color-white;
+	background: $color-dark-500;
+}
+
+.navigation nav ul {
+	margin: 0;
+	padding-left: 0;
+}
+
+.navigation nav ul {
+	position: relative;
+	display: block;
+	top: 30%;
+}
+
+.navigation nav a {
+	display: block;
+	font-size: 2.4rem;
+	line-height: 3rem;
+	padding-top: 1.6rem;
+	padding-bottom: 1.6rem;
+	text-align: center;
+}
+
+@keyframes navEnter {
+	0%   { opacity: 0; }
+	100% { opacity: 1; }
+}
+
+.navigation--active nav {
+	display: block;
+	animation: navEnter 0.5s;
+}
+
 @keyframes viewEnter {
 	0%   { opacity: 0; }
 	100% { opacity: 1; }
 }
 
 .app-body {
-	section { animation: viewEnter 1s; }
+	min-height: 80rem;
+	section {
+		animation: viewEnter 1s;
+	}
 }
 
 .app-footer {
-
+	color: $color-white;
+	background: $color-dark-500;
 }
 
 
