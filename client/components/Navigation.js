@@ -20,13 +20,15 @@ class Navigation extends React.Component {
 		});
 	}
 	render() {
+		var navigationClasses = classNames({ 'navigation': true, 'navigation--active': this.state.navigationState });
 		return (
-			<div className={classNames('navigation', { 'navigation--active': this.state.navigationState })}>
+			<div className={navigationClasses}>
 				<button className='navigation-trigger' onClick={this.toggleNav}>N</button>
 				<nav className={classNames}>
 					<ul>
 						<li onClick={this.toggleNav}><Link to='/about'>About</Link></li>
 						<li onClick={this.toggleNav}><Link to='/photos/single'>Photo</Link></li>
+						<li onClick={this.toggleNav}><Link to='/collections/single'>Collection</Link></li>
 					</ul>
 				</nav>
 			</div>

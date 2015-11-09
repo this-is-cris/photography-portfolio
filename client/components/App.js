@@ -8,19 +8,17 @@ class App extends React.Component {
 	render() {
 		return (
 			<div>
-				<header className='app-header'>
-					<div className='logo'>
-						<Link to='/'>
-							<h1>Ap</h1>
-						</Link>
-					</div>
+				<header className='app-header clearfix'>
+					<Link to='/' className='logo'>
+						<h1>Ap</h1>
+					</Link>
 
 					<Navigation />
 				</header>
 
-				<div className='app-body'>{this.props.children}</div>
+				<div className='app-body' id='main-view'>{this.props.children}</div>
 
-				<footer className='app-footer'>
+				<footer className='app-footer py3 text--center'>
 					@2015 Anatol Poiata
 				</footer>
 			</div>

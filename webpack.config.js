@@ -1,4 +1,6 @@
 
+var webpack = require('webpack');
+
 module.exports = {
 	entry: './client',
 	output: {
@@ -22,4 +24,7 @@ module.exports = {
 			}
 		]
 	}
+	// plugins: [
+ //    new webpack.optimize.UglifyJsPlugin({minimize: true})
+ //  ]
 };

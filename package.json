@@ -11,13 +11,15 @@
     "fetchr": "^0.5.20",
     "history": "^1.12.5",
     "keystone": "^0.3.13",
+    "minigrid": "^2.2.0",
     "model-transform": "^1.1.0",
     "react": "~0.14.0",
     "react-dom": "~0.14.0",
     "react-router": "1.0.0-rc3",
     "request": "^2.60.0",
     "store-prototype": "^1.1.1",
-    "underscore": "^1.8.3"
+    "underscore": "^1.8.3",
+    "velocity-animate": "^1.2.3"
   },
   "devDependencies": {
     "webpack": "^1.12.1",

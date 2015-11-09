@@ -9,16 +9,32 @@ import { Router } from 'react-router';
 
 import routes from './routes';
 
+import {
+  unmountCollections,
+  unmountPhoto,
+  unmountAbout,
+  unmountHome
+} from './utils/unmountAnimations';
+
 var fetcher = new Fetcher({
     xhrPath: '/api',
     xhrTimeout: 10000
 });
 
+
 var history = createBrowserHistory();
 
 history.listen((location) => {
+  window.scrollTo(0, 0);
 	// Implement on new location enter...
+  var view = document.getElementById('main-view');
+  
+  if(view) {
+    view.style.transform = 'translateY(0)';
+    view.style.opacity = 1;
+  }
 });
+
 
 history.listenBefore((location, callback) => {
 	if(location.action == 'POP') {
@@ -26,9 +42,24 @@ history.listenBefore((location, callback) => {
   	return;
   }
 
+  var url = window.location.pathname.split('/');
+  console.log(url[1]);
+
   // Implement data fetching and callback to history listen...
-  callback();
+
+  switch(url[1]) {
+    case 'collections':
+      return unmountCollections(callback);
+    case 'photos':
+      return unmountPhoto(callback);
+    case 'about':
+      return unmountAbout(callback);
+    default:
+      return unmountHome(callback);
+  }
+
 });
+
 
 ReactDOM.render(
 	<Router routes={routes} history={history} />,

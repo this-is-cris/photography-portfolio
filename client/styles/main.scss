@@ -9,6 +9,8 @@ $color-white: #fff;
 $color-blue-500: #009DE0;
 $color-dark-500: #0E1323;
 
+$color-grey-100: #f2f2f2;
+
 *,
 *:before,
 *:after {
@@ -40,35 +42,50 @@ a:focus {
 	color: $color-blue-500;
 }
 
+@import 'grid';
+@import 'typography';
+
 .app-header {
 	position: relative;
-	height: 8rem;
-	padding-left: 4rem;
-	padding-right: 4rem;
+	height: 0;
 	color: $color-white;
-	background: $color-dark-500;
 	z-index: 5000;
 }
 
 .logo {
-	float: left;
+	position: absolute;
+	top: 4rem;
+	left: 2rem;
+	width: 4rem;
+	height: 4rem;
+	line-height: 3.6rem;
+	border: 2px solid $color-white;
+	text-align: center;
+	h1 { margin: 0;font-weight:400;font-size:1.4rem; }
+	@media (min-width: $breakpoint-sm) {
+		left: 6rem;
+	}
 }
 
 .navigation {
-	float: right;
+	// float: right;
 }
 
 .navigation-trigger {
 	position: absolute;
-	top: 0;
-	right: 4rem;
-	width: 8rem;
-	height: 8rem;
-	border: 0;
+	top: 4rem;
+	right: 2rem;
+	width: 4rem;
+	height: 4rem;
+	border: 2px solid $color-white;
 	font-family: inherit;
 	color: inherit;
 	background: transparent;
 	z-index: 1000;
+	cursor: pointer;
+	@media (min-width: $breakpoint-sm) {
+		right: 6rem;
+	}
 }
 
 .navigation nav {
@@ -102,14 +119,8 @@ a:focus {
 	text-align: center;
 }
 
-@keyframes navEnter {
-	0%   { opacity: 0; }
-	100% { opacity: 1; }
-}
-
 .navigation--active nav {
 	display: block;
-	animation: navEnter 0.5s;
 }
 
 @keyframes viewEnter {
@@ -119,8 +130,9 @@ a:focus {
 
 .app-body {
 	min-height: 80rem;
+	overflow: hidden;
 	section {
-		animation: viewEnter 1s;
+		animation: viewEnter 0.3s;
 	}
 }
 
@@ -132,4 +144,84 @@ a:focus {
 
 
 
+
+
+
+
+// Single photo view
+.photo-deck {
+	color: $color-white;
+	background: $color-dark-500;
+	width: 100%;
+	overflow: hidden;
+	-webkit-transform: translateY(-100%);
+	-moz-transform: translateY(-100%);
+	-ms-transform: translateY(-100%);
+	-o-transform: translateY(-100%);
+	transform: translateY(-100%);
+}
+
+.photo-deck > header {
+	height: 14rem;
+	padding-top: 5rem;
+	text-align: center;
+}
+
+.photo-deck h1 {
+	margin: 0;
+	padding: 3rem 6rem;
+	font-size: 1.4rem;
+	line-height: 1.6rem;
+	font-weight: 400;
+	text-transform: uppercase;
+	letter-spacing: 2px;
+}
+
+.photo-deck > .photo {
+	display: block;
+	width: 100%;
+	height: auto;
+	// height: 0;
+	max-width: 76.8rem;
+	
+	margin: 0 auto;
+	background: rgba(255,255,255,0.1);
+	pointer-events: none;
+	// @media (min-width: $breakpoint-sm) {
+	// 	height: 32rem;
+	// }
+	// @media (min-width: $breakpoint-md) {
+	// 	width: 76.5rem;
+	// 	height: 51rem;
+	// }
+}
+
+
+.thumbnail-gallery {
+}
+
+.thumbnail-gallery > ul {
+	margin: 0;
+	padding-left: 0;
+	text-align: center;
+}
+
+.thumbnail-gallery > ul > li {
+	display: inline-block;
+	width: 11rem;
+	height: 11rem;
+	margin: 2rem 1rem;
+	background: #f2f2f2;
+}
+
+
+
+.item {
+	// width: 33.333333%;
+}
+
+
+
+
+@import 'utils';
 
